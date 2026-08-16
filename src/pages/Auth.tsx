@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/input-otp";
 
 import { useAuth } from "@/hooks/use-auth";
-import logo from "@/assets/logo.svg";
+import { Container, Wordmark } from "@/components/site/ui";
 import { ArrowRight, Loader2, Mail, UserX } from "lucide-react";
 import { Suspense, useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router";
@@ -111,8 +111,21 @@ function Auth({ redirectAfterAuth }: AuthProps = {}) {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <header className="border-b border-ink/10 bg-paper/90 backdrop-blur">
+        <Container className="flex items-center justify-between py-3.5">
+          <a
+            href="/"
+            className="rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clay"
+            aria-label="Back to the concept homepage"
+          >
+            <Wordmark />
+          </a>
+          <p className="hidden text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground sm:block">
+            Painter Website Demo
+          </p>
+        </Container>
+      </header>
 
-      
       {/* Auth Content */}
       <div className="flex-1 flex items-center justify-center">
         <div className="flex items-center justify-center h-full flex-col">
@@ -120,16 +133,6 @@ function Auth({ redirectAfterAuth }: AuthProps = {}) {
           {step === "signIn" ? (
             <>
               <CardHeader className="text-center">
-              <div className="flex justify-center">
-                    <img
-                      src={logo}
-                      alt="Lock Icon"
-                      width={64}
-                      height={64}
-                      className="rounded-lg mb-4 mt-4 cursor-pointer"
-                      onClick={() => navigate("/")}
-                    />
-                  </div>
                 <CardTitle className="text-xl">Get Started</CardTitle>
                 <CardDescription>
                   Enter your email to log in or sign up

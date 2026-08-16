@@ -1,3 +1,18 @@
+## Painter Website (Demo)
+
+An unofficial website redesign concept for **Best Quality Painting Ltd.**, a
+Winnipeg painting company — built to demonstrate a more modern,
+conversion-focused presence for the business.
+
+The landing page presents the concept: services, portfolio, before-and-after
+comparisons, service areas, reviews, and a demo quote flow. A signed-in
+dashboard acts as the demo workspace. Everything is clearly labelled as an
+unofficial redesign concept, and no data is sent to or shared with the real
+business.
+
+Content is sourced from publicly available information (the company's official
+website and BBB profile) and displayed with a visible disclaimer.
+
 ## Overview
 
 This project uses the following tech stack:
