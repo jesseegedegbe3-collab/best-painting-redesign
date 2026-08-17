@@ -5,33 +5,25 @@ import { VlyToolbar } from "../vly-toolbar-readonly.tsx";
 import { InstrumentationProvider } from "@/instrumentation.tsx";
 import { ConvexAuthProvider } from "@convex-dev/auth/react";
 import { ConvexReactClient } from "convex/react";
-import { StrictMode, useEffect, lazy, Suspense } from "react";
+import { StrictMode, useEffect } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router";
 import "./index.css";
 import "./types/global.d.ts";
 
-// Lazy load route components for better code splitting
-const Landing = lazy(() => import("./pages/Landing.tsx"));
-const ServicesPage = lazy(() => import("./pages/Services.tsx"));
-const WorkPage = lazy(() => import("./pages/Work.tsx"));
-const WhyUsPage = lazy(() => import("./pages/WhyUs.tsx"));
-const AreasPage = lazy(() => import("./pages/Areas.tsx"));
-const ReviewsPage = lazy(() => import("./pages/Reviews.tsx"));
-const FaqPage = lazy(() => import("./pages/Faq.tsx"));
-const ContactPage = lazy(() => import("./pages/Contact.tsx"));
-const AuthPage = lazy(() => import("./pages/Auth.tsx"));
-const Dashboard = lazy(() => import("./pages/Dashboard.tsx"));
-const NotFound = lazy(() => import("./pages/NotFound.tsx"));
-
-// Simple loading fallback for route transitions
-function RouteLoading() {
-  return (
-    <div className="min-h-screen flex items-center justify-center">
-      <div className="animate-pulse text-muted-foreground">Loading...</div>
-    </div>
-  );
-}
+// Pages load eagerly — no runtime dynamic imports, so route modules can never
+// fail to fetch mid-session (kept static after repeated dev-server races).
+import Landing from "./pages/Landing.tsx";
+import ServicesPage from "./pages/Services.tsx";
+import WorkPage from "./pages/Work.tsx";
+import WhyUsPage from "./pages/WhyUs.tsx";
+import AreasPage from "./pages/Areas.tsx";
+import ReviewsPage from "./pages/Reviews.tsx";
+import FaqPage from "./pages/Faq.tsx";
+import ContactPage from "./pages/Contact.tsx";
+import AuthPage from "./pages/Auth.tsx";
+import Dashboard from "./pages/Dashboard.tsx";
+import NotFound from "./pages/NotFound.tsx";
 
 // Keep every page starting from the top when the route changes
 function ScrollToTop() {
@@ -78,31 +70,29 @@ createRoot(document.getElementById("root")!).render(
         <BrowserRouter>
           <RouteSyncer />
           <ScrollToTop />
-          <Suspense fallback={<RouteLoading />}>
-            <Routes>
-              <Route path="/" element={<Landing />} />
-              <Route path="/services" element={<ServicesPage />} />
-              <Route path="/work" element={<WorkPage />} />
-              <Route path="/why-us" element={<WhyUsPage />} />
-              <Route path="/areas" element={<AreasPage />} />
-              <Route path="/reviews" element={<ReviewsPage />} />
-              <Route path="/faq" element={<FaqPage />} />
-              <Route path="/contact" element={<ContactPage />} />
-              <Route
-                path="/auth"
-                element={<AuthPage redirectAfterAuth="/dashboard" />}
-              />
-              <Route
-                path="/dashboard"
-                element={
-                  <RequireAuth>
-                    <Dashboard />
-                  </RequireAuth>
-                }
-              />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </Suspense>
+          <Routes>
+            <Route path="/" element={<Landing />} />
+            <Route path="/services" element={<ServicesPage />} />
+            <Route path="/work" element={<WorkPage />} />
+            <Route path="/why-us" element={<WhyUsPage />} />
+            <Route path="/areas" element={<AreasPage />} />
+            <Route path="/reviews" element={<ReviewsPage />} />
+            <Route path="/faq" element={<FaqPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route
+              path="/auth"
+              element={<AuthPage redirectAfterAuth="/dashboard" />}
+            />
+            <Route
+              path="/dashboard"
+              element={
+                <RequireAuth>
+                  <Dashboard />
+                </RequireAuth>
+              }
+            />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
         </BrowserRouter>
         <Toaster />
       </ConvexAuthProvider>
