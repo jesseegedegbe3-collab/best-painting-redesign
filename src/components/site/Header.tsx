@@ -48,7 +48,7 @@ export function Header() {
       >
         <Container
           className={cn(
-            "flex max-w-7xl flex-nowrap items-center justify-between gap-4 transition-all duration-300",
+            "flex max-w-7xl flex-nowrap items-center justify-between gap-6 transition-all duration-300",
             scrolled ? "py-3" : "py-4",
           )}
         >
@@ -60,33 +60,29 @@ export function Header() {
             <Wordmark />
           </a>
 
+          {/* Full desktop nav — fits comfortably at xl and up */}
           <nav
-            className="hidden shrink-0 items-center gap-3 lg:flex xl:gap-5"
+            className="hidden shrink-0 items-center gap-0.5 xl:flex"
             aria-label="Primary"
           >
             {NAV_ITEMS.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
-                className="whitespace-nowrap text-sm font-medium text-ink/70 transition-colors hover:text-clay-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clay rounded-sm"
+                className="whitespace-nowrap rounded-md px-2.5 py-2 text-sm font-medium text-ink/70 transition-colors hover:bg-ink/5 hover:text-clay-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clay"
               >
                 {item.label}
               </a>
             ))}
           </nav>
 
-          <div className="hidden shrink-0 items-center gap-3 lg:flex">
-            <a
-              href={BUSINESS.phoneHref}
-              aria-label={`Call ${BUSINESS.phoneDisplay}`}
-              className="inline-flex h-11 shrink-0 items-center gap-2 rounded-md px-2.5 text-sm font-semibold text-ink transition-colors hover:text-clay-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clay"
+          <div className="hidden shrink-0 items-center xl:flex">
+            <PrimaryCta
+              href="#contact"
+              className="h-11 whitespace-nowrap px-5"
+              arrow={false}
             >
-              <Phone className="size-4" />
-              <span className="hidden xl:inline">{BUSINESS.phoneDisplay}</span>
-            </a>
-            <PrimaryCta href="/contact" className="h-11 shrink-0 whitespace-nowrap px-5">
-              <span className="xl:hidden">Free Estimate</span>
-              <span className="hidden xl:inline">Get a Free Estimate</span>
+              Get a Free Estimate
             </PrimaryCta>
           </div>
 
@@ -96,18 +92,18 @@ export function Header() {
             aria-expanded={open}
             aria-controls="mobile-menu"
             aria-label={open ? "Close menu" : "Open menu"}
-            className="grid size-11 place-items-center rounded-md border border-ink/10 text-ink lg:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clay"
+            className="grid size-11 shrink-0 place-items-center rounded-md border border-ink/10 text-ink xl:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clay"
           >
             {open ? <X className="size-5" /> : <Menu className="size-5" />}
           </button>
         </Container>
       </header>
 
-      {/* Mobile menu */}
+      {/* Mobile / tablet menu (below xl) — scrolls if the screen is short */}
       <div
         id="mobile-menu"
         className={cn(
-          "fixed inset-0 top-0 z-40 flex flex-col bg-paper px-5 pt-24 pb-8 transition-opacity lg:hidden",
+          "fixed inset-0 top-0 z-40 flex flex-col overflow-y-auto bg-paper px-5 pb-[max(2rem,env(safe-area-inset-bottom))] pt-24 transition-opacity xl:hidden",
           open ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0",
         )}
         aria-hidden={!open}
@@ -126,7 +122,7 @@ export function Header() {
           ))}
         </nav>
         <div className="mt-8 flex flex-col gap-3">
-          <PrimaryCta href="/contact" className="w-full" arrow={false}>
+          <PrimaryCta href="#contact" className="w-full" arrow={false}>
             Get a Free Estimate
           </PrimaryCta>
           <a

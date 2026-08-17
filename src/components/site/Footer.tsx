@@ -107,7 +107,7 @@ export function Footer() {
 
 export function StickyMobileBar() {
   return (
-    <div className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-2 gap-2 border-t border-ink/10 bg-paper/95 p-3 backdrop-blur lg:hidden">
+    <div className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-2 gap-2 border-t border-ink/10 bg-paper/95 px-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-3 backdrop-blur xl:hidden">
       <a
         href={BUSINESS.phoneHref}
         className="inline-flex h-12 items-center justify-center gap-2 rounded-md border border-ink/15 text-sm font-semibold text-ink"
@@ -116,10 +116,10 @@ export function StickyMobileBar() {
         Call
       </a>
       <a
-        href="/contact"
-        className="inline-flex h-12 items-center justify-center gap-2 rounded-md bg-clay-strong text-sm font-semibold text-white"
+        href="#contact"
+        className="inline-flex h-12 items-center justify-center gap-2 whitespace-nowrap rounded-md bg-clay-strong px-2 text-sm font-semibold text-white"
       >
-        Get Free Estimate
+        Get Estimate
       </a>
     </div>
   );
