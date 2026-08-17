@@ -23,17 +23,16 @@ export function projectImage(file: string, width = 1080, quality = 75) {
   return `${IMAGE_HOST}${file}&w=${width}&q=${quality}`;
 }
 
-// The site is one long scrolling page: every nav item is an anchor that
-// scrolls to its section instead of navigating to a separate route.
+// Each part of the site is its own page in the navigation bar.
 export const NAV_ITEMS = [
-  { label: "Home", href: "#top" },
-  { label: "Services", href: "#services" },
-  { label: "Our Work", href: "#work" },
-  { label: "Why Us", href: "#why-us" },
-  { label: "Service Areas", href: "#areas" },
-  { label: "Reviews", href: "#reviews" },
-  { label: "FAQ", href: "#faq" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/" },
+  { label: "Services", href: "/services" },
+  { label: "Our Work", href: "/work" },
+  { label: "Why Us", href: "/why-us" },
+  { label: "Service Areas", href: "/areas" },
+  { label: "Reviews", href: "/reviews" },
+  { label: "FAQ", href: "/faq" },
+  { label: "Contact", href: "/contact" },
 ] as const;
 
 export interface ServiceItem {

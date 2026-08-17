@@ -7,27 +7,23 @@ import { ConvexAuthProvider } from "@convex-dev/auth/react";
 import { ConvexReactClient } from "convex/react";
 import { StrictMode, useEffect } from "react";
 import { createRoot } from "react-dom/client";
-import { BrowserRouter, Navigate, Route, Routes, useLocation } from "react-router";
+import { BrowserRouter, Route, Routes, useLocation } from "react-router";
 import "./index.css";
 import "./types/global.d.ts";
 
 // Pages load eagerly — no runtime dynamic imports, so route modules can never
 // fail to fetch mid-session.
 import Landing from "./pages/Landing.tsx";
+import Services from "./pages/Services.tsx";
+import Work from "./pages/Work.tsx";
+import WhyUs from "./pages/WhyUs.tsx";
+import Areas from "./pages/Areas.tsx";
+import Reviews from "./pages/Reviews.tsx";
+import Faq from "./pages/Faq.tsx";
+import Contact from "./pages/Contact.tsx";
 import AuthPage from "./pages/Auth.tsx";
 import Dashboard from "./pages/Dashboard.tsx";
 import NotFound from "./pages/NotFound.tsx";
-
-// The site is one long scrolling page; old page URLs redirect to their section.
-const SECTION_REDIRECTS = [
-  { path: "/services", hash: "#services" },
-  { path: "/work", hash: "#work" },
-  { path: "/why-us", hash: "#why-us" },
-  { path: "/areas", hash: "#areas" },
-  { path: "/reviews", hash: "#reviews" },
-  { path: "/faq", hash: "#faq" },
-  { path: "/contact", hash: "#contact" },
-] as const;
 
 // Scroll to the anchored section on load/navigation, otherwise to the top
 function ScrollManager() {
@@ -87,13 +83,13 @@ createRoot(document.getElementById("root")!).render(
           <ScrollManager />
           <Routes>
             <Route path="/" element={<Landing />} />
-            {SECTION_REDIRECTS.map(({ path, hash }) => (
-              <Route
-                key={path}
-                path={path}
-                element={<Navigate to={`/${hash}`} replace />}
-              />
-            ))}
+            <Route path="/services" element={<Services />} />
+            <Route path="/work" element={<Work />} />
+            <Route path="/why-us" element={<WhyUs />} />
+            <Route path="/areas" element={<Areas />} />
+            <Route path="/reviews" element={<Reviews />} />
+            <Route path="/faq" element={<Faq />} />
+            <Route path="/contact" element={<Contact />} />
             <Route
               path="/auth"
               element={<AuthPage redirectAfterAuth="/dashboard" />}

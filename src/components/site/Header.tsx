@@ -78,7 +78,7 @@ export function Header() {
 
           <div className="hidden shrink-0 items-center xl:flex">
             <PrimaryCta
-              href="#contact"
+              href="/contact"
               className="h-11 whitespace-nowrap px-5"
               arrow={false}
             >
@@ -122,7 +122,7 @@ export function Header() {
           ))}
         </nav>
         <div className="mt-8 flex flex-col gap-3">
-          <PrimaryCta href="#contact" className="w-full" arrow={false}>
+          <PrimaryCta href="/contact" className="w-full" arrow={false}>
             Get a Free Estimate
           </PrimaryCta>
           <a

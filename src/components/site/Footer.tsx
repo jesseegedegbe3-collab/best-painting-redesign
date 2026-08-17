@@ -116,7 +116,7 @@ export function StickyMobileBar() {
         Call
       </a>
       <a
-        href="#contact"
+        href="/contact"
         className="inline-flex h-12 items-center justify-center gap-2 whitespace-nowrap rounded-md bg-clay-strong px-2 text-sm font-semibold text-white"
       >
         Get Estimate

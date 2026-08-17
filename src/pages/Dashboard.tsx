@@ -20,7 +20,7 @@ const QUICK_LINKS = [
     title: "Try the Quote Form",
     description:
       "Submit an estimate request the way a visitor would — it lands in the inbox below, straight from the database.",
-    href: "/#contact",
+    href: "/contact",
     label: "Try the quote flow",
     external: false,
   },

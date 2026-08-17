@@ -25,7 +25,7 @@ export function FaqSection() {
             description="Straightforward answers about pricing, services, and getting started."
           />
           <a
-            href="#contact"
+            href="/contact"
             className="group mt-7 inline-flex items-center gap-2 text-sm font-semibold text-clay-strong transition-colors hover:text-clay-deep"
           >
             Still have questions? Get in touch
