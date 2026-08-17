@@ -17,7 +17,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
       <main id="main">{children}</main>
 
       <Footer />
-      <div className="h-16 xl:hidden" aria-hidden />
+      <div className="h-16 lg:hidden" aria-hidden />
       <StickyMobileBar />
     </div>
   );

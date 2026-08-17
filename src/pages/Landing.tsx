@@ -5,18 +5,8 @@ import {
   ServicesSection,
   ShowcaseSection,
 } from "@/components/site/Services";
-import { BeforeAfterSection, GallerySection } from "@/components/site/Work";
-import {
-  AreasSection,
-  ProcessSection,
-  ReviewsSection,
-  StatsSection,
-  WhyUsSection,
-} from "@/components/site/Trust";
-import { FaqSection, QuoteSection } from "@/components/site/Contact";
+import { QuoteSection } from "@/components/site/Contact";
 
-// Everything lives on one long scrolling page — each "page" of the site is a
-// section below, and every nav link scrolls to its anchor.
 export default function Landing() {
   return (
     <SiteLayout>
@@ -25,14 +15,6 @@ export default function Landing() {
       <IntroSection />
       <ServicesSection />
       <ShowcaseSection />
-      <GallerySection />
-      <BeforeAfterSection />
-      <WhyUsSection />
-      <StatsSection />
-      <ProcessSection />
-      <AreasSection />
-      <ReviewsSection />
-      <FaqSection />
       <QuoteSection />
     </SiteLayout>
   );

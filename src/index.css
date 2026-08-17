@@ -146,7 +146,7 @@
     font-family: var(--font-sans);
     text-rendering: optimizeLegibility;
   }
-  section[id]:not(#top) {
+  section[id] {
     scroll-margin-top: 5.5rem;
   }
   ::selection {
