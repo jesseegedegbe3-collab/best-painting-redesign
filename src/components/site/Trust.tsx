@@ -187,17 +187,37 @@ export function ReviewsSection() {
               rel="noopener noreferrer"
               className="group inline-flex items-center gap-1.5 text-sm font-semibold text-clay-strong transition-colors hover:text-clay-deep"
             >
-              See More Reviews
+              See More Google Reviews
               <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
+
+            <div className="flex w-full flex-col gap-2 border-t border-ink/10 pt-4 lg:items-end">
+              <div className="flex items-center gap-2.5">
+                <span className="rounded-sm bg-clay-soft px-2 py-0.5 text-xs font-bold text-clay-strong">
+                  A+
+                </span>
+                <p className="text-sm font-semibold text-ink">
+                  BBB Accredited Since 2011
+                </p>
+              </div>
+              <a
+                href={BUSINESS.bbbProfile}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-1.5 text-sm font-semibold text-clay-strong transition-colors hover:text-clay-deep"
+              >
+                View BBB Profile
+                <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </a>
+            </div>
           </Reveal>
         </div>
 
-        <div className="mt-12 grid gap-4 lg:grid-cols-3">
+        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {REVIEWS.map((review, i) => (
             <Reveal
-              key={review.name}
-              delay={i * 0.08}
+              key={`${review.name}-${i}`}
+              delay={(i % 3) * 0.06}
               className="flex flex-col rounded-lg border border-ink/5 bg-paper-2 p-6"
             >
               <Quote className="size-5 text-clay" aria-hidden />
@@ -206,9 +226,9 @@ export function ReviewsSection() {
               </blockquote>
               <footer className="mt-6 border-t border-ink/10 pt-4">
                 <p className="text-sm font-semibold text-ink">{review.name}</p>
-                <p className="mt-0.5 text-xs text-muted-foreground">
+                <span className="mt-1.5 inline-flex w-fit rounded-full border border-ink/10 bg-paper px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-ink/60">
                   {review.source}
-                </p>
+                </span>
               </footer>
             </Reveal>
           ))}

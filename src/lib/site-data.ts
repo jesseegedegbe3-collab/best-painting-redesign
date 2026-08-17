@@ -366,7 +366,8 @@ export interface ReviewItem {
   source: string;
 }
 
-// Short excerpts from publicly displayed Google reviews on the official site.
+// Short excerpts from publicly displayed Google and BBB reviews, as shown on
+// the official website and the company's BBB profile.
 export const REVIEWS: ReviewItem[] = [
   {
     quote:
@@ -384,6 +385,30 @@ export const REVIEWS: ReviewItem[] = [
     quote:
       "We just got the outside of our house painted by Best Quality and the work was outstanding. The workers were very careful about my garden and made sure to not make any mess. I highly recommend them.",
     name: "Sheena K B",
+    source: "Google Review",
+  },
+  {
+    quote:
+      "Beautiful job!! Well done!! The crew were friendly and hard workers!! Would certainly recommend Best Quality Painting!!",
+    name: "S Levesque",
+    source: "Google Review",
+  },
+  {
+    quote:
+      "Best Quality Painting did an amazing job on my house and are great people!!",
+    name: "Joe",
+    source: "Google Review",
+  },
+  {
+    quote:
+      "Best Quality Painting did a wonderful job on my home. The staff is fantastic to work with and very professional and respectful of my home, family, and time.",
+    name: "Kelly N.",
+    source: "BBB Review",
+  },
+  {
+    quote:
+      "Really happy with the work from Best Quality Painting. The crew was friendly, professional, and the paint job turned out great. No complaints at all.",
+    name: "Anonymous",
     source: "Google Review",
   },
 ];
