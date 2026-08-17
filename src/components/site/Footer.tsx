@@ -50,14 +50,6 @@ export function Footer() {
                   </a>
                 </li>
               ))}
-              <li>
-                <a
-                  href="/contact"
-                  className="text-sm text-paper/75 transition-colors hover:text-clay"
-                >
-                  Contact
-                </a>
-              </li>
             </ul>
           </nav>
 

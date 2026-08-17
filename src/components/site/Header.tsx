@@ -7,7 +7,7 @@ import { Container, PrimaryCta, Wordmark } from "./ui";
 export function DisclaimerBar() {
   return (
     <div className="bg-ink text-paper">
-      <Container className="flex items-center justify-between gap-4 py-2">
+      <Container className="flex max-w-7xl items-center justify-between gap-4 py-2">
         <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-clay">
           Unofficial Website Redesign Concept
         </p>
@@ -48,7 +48,7 @@ export function Header() {
       >
         <Container
           className={cn(
-            "flex flex-nowrap items-center justify-between gap-4 transition-all duration-300",
+            "flex max-w-7xl flex-nowrap items-center justify-between gap-4 transition-all duration-300",
             scrolled ? "py-3" : "py-4",
           )}
         >
@@ -61,7 +61,7 @@ export function Header() {
           </a>
 
           <nav
-            className="hidden shrink-0 items-center gap-5 lg:flex xl:gap-6"
+            className="hidden shrink-0 items-center gap-3 lg:flex xl:gap-5"
             aria-label="Primary"
           >
             {NAV_ITEMS.map((item) => (
@@ -85,7 +85,8 @@ export function Header() {
               <span className="hidden xl:inline">{BUSINESS.phoneDisplay}</span>
             </a>
             <PrimaryCta href="/contact" className="h-11 shrink-0 whitespace-nowrap px-5">
-              Get a Free Estimate
+              <span className="xl:hidden">Free Estimate</span>
+              <span className="hidden xl:inline">Get a Free Estimate</span>
             </PrimaryCta>
           </div>
 

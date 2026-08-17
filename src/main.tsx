@@ -16,6 +16,7 @@ const Landing = lazy(() => import("./pages/Landing.tsx"));
 const ServicesPage = lazy(() => import("./pages/Services.tsx"));
 const WorkPage = lazy(() => import("./pages/Work.tsx"));
 const WhyUsPage = lazy(() => import("./pages/WhyUs.tsx"));
+const AreasPage = lazy(() => import("./pages/Areas.tsx"));
 const ReviewsPage = lazy(() => import("./pages/Reviews.tsx"));
 const FaqPage = lazy(() => import("./pages/Faq.tsx"));
 const ContactPage = lazy(() => import("./pages/Contact.tsx"));
@@ -83,6 +84,7 @@ createRoot(document.getElementById("root")!).render(
               <Route path="/services" element={<ServicesPage />} />
               <Route path="/work" element={<WorkPage />} />
               <Route path="/why-us" element={<WhyUsPage />} />
+              <Route path="/areas" element={<AreasPage />} />
               <Route path="/reviews" element={<ReviewsPage />} />
               <Route path="/faq" element={<FaqPage />} />
               <Route path="/contact" element={<ContactPage />} />
