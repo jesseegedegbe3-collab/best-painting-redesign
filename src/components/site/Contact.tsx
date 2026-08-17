@@ -7,8 +7,10 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { CheckCircle2, Clock, Mail, MapPin, Phone } from "lucide-react";
-import { useState } from "react";
+import { api } from "@/convex/_generated/api";
+import { CheckCircle2, Clock, Loader2, Mail, MapPin, Phone } from "lucide-react";
+import { useMutation } from "convex/react";
+import { useState, type FormEvent } from "react";
 import { BUSINESS, FAQS, PROJECT_TYPES } from "@/lib/site-data";
 import { Container, Reveal, SectionHeading } from "./ui";
 
@@ -56,6 +58,33 @@ export function FaqSection() {
 
 export function QuoteSection() {
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const submitQuoteRequest = useMutation(api.quotes.submitQuoteRequest);
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const data = new FormData(form);
+    setError(null);
+    setIsSubmitting(true);
+    try {
+      await submitQuoteRequest({
+        name: String(data.get("name") ?? "").trim(),
+        email: String(data.get("email") ?? "").trim(),
+        phone: String(data.get("phone") ?? "").trim(),
+        projectType: String(data.get("project-type") ?? "").trim(),
+        message: String(data.get("message") ?? "").trim(),
+      });
+      setSubmitted(true);
+    } catch {
+      setError(
+        "Something went wrong saving your request. Please try again, or call the company directly.",
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <section id="quote" className="bg-ink py-20 sm:py-28">
@@ -142,12 +171,13 @@ export function QuoteSection() {
                   <CheckCircle2 className="size-6" />
                 </span>
                 <h3 className="mt-5 text-xl font-semibold text-ink">
-                  Thanks — this is a demo form
+                  Thanks — your request was saved
                 </h3>
                 <p className="mt-3 max-w-sm text-sm leading-relaxed text-muted-foreground">
-                  This redesign concept is not connected to Best Quality
-                  Painting's systems, so nothing was sent and no information was
-                  stored. To reach the real business, call{" "}
+                  Your request has been stored in this demo's database, exactly
+                  where it would land for a business owner to follow up.
+                  Because this is a redesign concept, it was never sent to Best
+                  Quality Painting — to reach the real company, call{" "}
                   <a
                     href={BUSINESS.phoneHref}
                     className="font-semibold text-clay-strong underline-offset-2 hover:underline"
@@ -166,12 +196,9 @@ export function QuoteSection() {
               </div>
             ) : (
               <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  setSubmitted(true);
-                }}
+                onSubmit={handleSubmit}
                 className="space-y-5"
-                aria-label="Demo quote request form"
+                aria-label="Quote request form"
               >
                 <div className="grid gap-5 sm:grid-cols-2">
                   <div className="space-y-2">
@@ -243,15 +270,26 @@ export function QuoteSection() {
                   />
                 </div>
 
+                {error && (
+                  <p
+                    role="alert"
+                    className="rounded-md border border-destructive/30 bg-destructive/5 px-3 py-2.5 text-sm text-destructive"
+                  >
+                    {error}
+                  </p>
+                )}
+
                 <button
                   type="submit"
-                  className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-md bg-clay-strong px-6 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-clay-deep focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clay focus-visible:ring-offset-2"
+                  disabled={isSubmitting}
+                  className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-md bg-clay-strong px-6 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-clay-deep focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clay focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-70"
                 >
-                  Request My Free Estimate
+                  {isSubmitting && <Loader2 className="size-4 animate-spin" />}
+                  {isSubmitting ? "Saving…" : "Request My Free Estimate"}
                 </button>
                 <p className="text-center text-xs leading-relaxed text-muted-foreground">
-                  Demo form — this redesign concept is not connected to Best
-                  Quality Painting's systems.
+                  Demo form — requests are stored in this demo's database and
+                  are never sent to Best Quality Painting.
                 </p>
               </form>
             )}

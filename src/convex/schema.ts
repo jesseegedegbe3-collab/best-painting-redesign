@@ -34,6 +34,17 @@ const schema = defineSchema(
 
     // add other tables here
 
+    // Quote requests submitted through the estimate form. Stored so the
+    // demo can show how incoming leads would arrive in a real CMS/dashboard.
+    quoteRequests: defineTable({
+      name: v.string(),
+      email: v.string(),
+      phone: v.string(),
+      projectType: v.string(),
+      message: v.string(),
+      submittedAt: v.number(),
+    }).index("by_submittedAt", ["submittedAt"]),
+
     // tableName: defineTable({
     //   ...
     //   // table fields
