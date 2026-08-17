@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="15" fill="#211f1c"/>
+  <!-- paint roller cylinder -->
+  <rect x="13" y="14" width="38" height="15" rx="7.5" fill="#efe7db"/>
+  <!-- paint band on the roller -->
+  <rect x="13" y="19.5" width="38" height="4" rx="2" fill="#c0743a"/>
+  <!-- handle -->
+  <rect x="29.5" y="29" width="5" height="15" rx="2.5" fill="#d9d2c5"/>
+  <!-- paint drip -->
+  <rect x="20.5" y="44" width="3" height="7" rx="1.5" fill="#c0743a"/>
+  <circle cx="22" cy="53" r="3" fill="#c0743a"/>
+</svg>
