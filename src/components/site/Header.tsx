@@ -4,16 +4,6 @@ import { BUSINESS, NAV_ITEMS } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
 import { Container, PrimaryCta, Wordmark } from "./ui";
 
-// Compact desktop-only nav — keeps the header to a single uncluttered row.
-// The full list (NAV_ITEMS) is used in the mobile menu and the footer.
-const DESKTOP_NAV = [
-  { label: "Services", href: "#services" },
-  { label: "Our Work", href: "#work" },
-  { label: "Why Us", href: "#why-us" },
-  { label: "Reviews", href: "#reviews" },
-  { label: "FAQ", href: "#faq" },
-] as const;
-
 export function DisclaimerBar() {
   return (
     <div className="bg-ink text-paper">
@@ -63,9 +53,9 @@ export function Header() {
           )}
         >
           <a
-            href="#top"
+            href="/"
             className="shrink-0 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clay"
-            aria-label="Best Quality Painting Ltd. — back to top"
+            aria-label="Best Quality Painting Ltd. — homepage"
           >
             <Wordmark />
           </a>
@@ -74,7 +64,7 @@ export function Header() {
             className="hidden shrink-0 items-center gap-5 lg:flex xl:gap-6"
             aria-label="Primary"
           >
-            {DESKTOP_NAV.map((item) => (
+            {NAV_ITEMS.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
@@ -94,7 +84,7 @@ export function Header() {
               <Phone className="size-4" />
               <span className="hidden xl:inline">{BUSINESS.phoneDisplay}</span>
             </a>
-            <PrimaryCta href="#quote" className="h-11 shrink-0 whitespace-nowrap px-5">
+            <PrimaryCta href="/contact" className="h-11 shrink-0 whitespace-nowrap px-5">
               Get a Free Estimate
             </PrimaryCta>
           </div>
@@ -135,7 +125,7 @@ export function Header() {
           ))}
         </nav>
         <div className="mt-8 flex flex-col gap-3">
-          <PrimaryCta href="#quote" className="w-full" arrow={false}>
+          <PrimaryCta href="/contact" className="w-full" arrow={false}>
             Get a Free Estimate
           </PrimaryCta>
           <a

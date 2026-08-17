@@ -24,13 +24,11 @@ export function projectImage(file: string, width = 1080, quality = 75) {
 }
 
 export const NAV_ITEMS = [
-  { label: "Services", href: "#services" },
-  { label: "Our Work", href: "#work" },
-  { label: "Why Us", href: "#why-us" },
-  { label: "Process", href: "#process" },
-  { label: "Service Areas", href: "#areas" },
-  { label: "Reviews", href: "#reviews" },
-  { label: "FAQ", href: "#faq" },
+  { label: "Services", href: "/services" },
+  { label: "Our Work", href: "/work" },
+  { label: "Why Us", href: "/why-us" },
+  { label: "Reviews", href: "/reviews" },
+  { label: "FAQ", href: "/faq" },
 ] as const;
 
 export interface ServiceItem {

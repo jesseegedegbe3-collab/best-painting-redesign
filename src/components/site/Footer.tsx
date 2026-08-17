@@ -52,7 +52,7 @@ export function Footer() {
               ))}
               <li>
                 <a
-                  href="#quote"
+                  href="/contact"
                   className="text-sm text-paper/75 transition-colors hover:text-clay"
                 >
                   Contact
@@ -124,7 +124,7 @@ export function StickyMobileBar() {
         Call
       </a>
       <a
-        href="#quote"
+        href="/contact"
         className="inline-flex h-12 items-center justify-center gap-2 rounded-md bg-clay-strong text-sm font-semibold text-white"
       >
         Get Free Estimate

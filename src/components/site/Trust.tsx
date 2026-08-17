@@ -126,7 +126,7 @@ export function AreasSection() {
             clean finish to every neighbourhood.
           </p>
           <a
-            href="#quote"
+            href="/contact"
             className="group mt-7 inline-flex items-center gap-2 text-sm font-semibold text-clay-strong transition-colors hover:text-clay-deep"
           >
             Check availability in your area
