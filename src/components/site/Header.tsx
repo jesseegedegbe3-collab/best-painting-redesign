@@ -4,6 +4,16 @@ import { BUSINESS, NAV_ITEMS } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
 import { Container, PrimaryCta, Wordmark } from "./ui";
 
+// Compact desktop-only nav — keeps the header to a single uncluttered row.
+// The full list (NAV_ITEMS) is used in the mobile menu and the footer.
+const DESKTOP_NAV = [
+  { label: "Services", href: "#services" },
+  { label: "Our Work", href: "#work" },
+  { label: "Why Us", href: "#why-us" },
+  { label: "Reviews", href: "#reviews" },
+  { label: "FAQ", href: "#faq" },
+] as const;
+
 export function DisclaimerBar() {
   return (
     <div className="bg-ink text-paper">
@@ -48,39 +58,43 @@ export function Header() {
       >
         <Container
           className={cn(
-            "flex items-center justify-between gap-4 transition-all duration-300",
+            "flex flex-nowrap items-center justify-between gap-4 transition-all duration-300",
             scrolled ? "py-3" : "py-4",
           )}
         >
           <a
             href="#top"
-            className="rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clay"
+            className="shrink-0 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clay"
             aria-label="Best Quality Painting Ltd. — back to top"
           >
             <Wordmark />
           </a>
 
-          <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary">
-            {NAV_ITEMS.map((item) => (
+          <nav
+            className="hidden shrink-0 items-center gap-5 lg:flex xl:gap-6"
+            aria-label="Primary"
+          >
+            {DESKTOP_NAV.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
-                className="text-sm font-medium text-ink/70 transition-colors hover:text-clay-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clay rounded-sm"
+                className="whitespace-nowrap text-sm font-medium text-ink/70 transition-colors hover:text-clay-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clay rounded-sm"
               >
                 {item.label}
               </a>
             ))}
           </nav>
 
-          <div className="hidden items-center gap-3 lg:flex">
+          <div className="hidden shrink-0 items-center gap-3 lg:flex">
             <a
               href={BUSINESS.phoneHref}
-              className="inline-flex h-12 items-center gap-2 rounded-md px-3 text-sm font-semibold text-ink transition-colors hover:text-clay-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clay"
+              aria-label={`Call ${BUSINESS.phoneDisplay}`}
+              className="inline-flex h-11 shrink-0 items-center gap-2 rounded-md px-2.5 text-sm font-semibold text-ink transition-colors hover:text-clay-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clay"
             >
               <Phone className="size-4" />
-              {BUSINESS.phoneDisplay}
+              <span className="hidden xl:inline">{BUSINESS.phoneDisplay}</span>
             </a>
-            <PrimaryCta href="#quote" className="h-11 px-5">
+            <PrimaryCta href="#quote" className="h-11 shrink-0 whitespace-nowrap px-5">
               Get a Free Estimate
             </PrimaryCta>
           </div>
