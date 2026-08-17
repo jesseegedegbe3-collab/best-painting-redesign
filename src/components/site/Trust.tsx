@@ -126,7 +126,7 @@ export function AreasSection() {
             clean finish to every neighbourhood.
           </p>
           <a
-            href="/contact"
+            href="#contact"
             className="group mt-7 inline-flex items-center gap-2 text-sm font-semibold text-clay-strong transition-colors hover:text-clay-deep"
           >
             Check availability in your area
@@ -164,7 +164,7 @@ export function ReviewsSection() {
           <SectionHeading
             eyebrow="Reviews"
             title="What Winnipeg Homeowners Say"
-            description="Short excerpts from publicly displayed Google reviews of Best Quality Painting Ltd."
+            description="Real Google and BBB reviews, shown publicly on Best Quality Painting's official website — transcribed here verbatim."
           />
           <Reveal
             delay={0.1}

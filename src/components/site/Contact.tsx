@@ -23,7 +23,7 @@ export function FaqSection() {
             description="Straightforward answers about pricing, services, and getting started."
           />
           <a
-            href="/contact"
+            href="#contact"
             className="group mt-7 inline-flex items-center gap-2 text-sm font-semibold text-clay-strong transition-colors hover:text-clay-deep"
           >
             Still have questions? Get in touch
@@ -58,7 +58,7 @@ export function QuoteSection() {
   const [submitted, setSubmitted] = useState(false);
 
   return (
-    <section id="quote" className="bg-ink py-20 sm:py-28">
+    <section id="contact" className="bg-ink py-20 sm:py-28">
       <Container className="grid gap-12 lg:grid-cols-2 lg:gap-16">
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-clay">

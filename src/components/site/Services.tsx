@@ -49,7 +49,7 @@ export function IntroSection() {
           </ul>
 
           <a
-            href="/why-us"
+            href="#why-us"
             className="group mt-8 inline-flex items-center gap-2 text-sm font-semibold text-clay-strong transition-colors hover:text-clay-deep"
           >
             Why Choose Best Quality
@@ -92,7 +92,7 @@ export function ServicesSection() {
             description="Interior and exterior painting, plus the repair and preparation work that makes the finish last — for homes and businesses across Winnipeg."
           />
           <a
-            href="/contact"
+            href="#contact"
             className="hidden shrink-0 items-center gap-2 text-sm font-semibold text-clay-strong transition-colors hover:text-clay-deep md:inline-flex"
           >
             Request an estimate
@@ -117,7 +117,7 @@ export function ServicesSection() {
                 {service.description}
               </p>
               <a
-                href="/contact"
+                href="#contact"
                 className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-ink/70 transition-colors group-hover:text-clay-strong"
               >
                 Get a quote
@@ -179,7 +179,7 @@ export function ShowcaseSection() {
                     {item.description}
                   </p>
                   <a
-                    href="/contact"
+                    href="#contact"
                     className="group mt-6 inline-flex items-center gap-2 text-sm font-semibold text-clay-strong transition-colors hover:text-clay-deep"
                   >
                     Request a quote
@@ -193,7 +193,7 @@ export function ShowcaseSection() {
 
         <div className="mt-16 flex justify-center">
           <a
-            href="/services"
+            href="#services"
             className="group inline-flex h-12 items-center justify-center gap-2 rounded-md border border-ink/20 px-6 text-sm font-semibold text-ink transition-colors hover:border-ink/50 hover:bg-ink/5"
           >
             Explore Our Services

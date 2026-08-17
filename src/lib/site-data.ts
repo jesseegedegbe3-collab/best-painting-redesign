@@ -23,15 +23,17 @@ export function projectImage(file: string, width = 1080, quality = 75) {
   return `${IMAGE_HOST}${file}&w=${width}&q=${quality}`;
 }
 
+// The site is one long scrolling page: every nav item is an anchor that
+// scrolls to its section instead of navigating to a separate route.
 export const NAV_ITEMS = [
-  { label: "Home", href: "/" },
-  { label: "Services", href: "/services" },
-  { label: "Our Work", href: "/work" },
-  { label: "Why Us", href: "/why-us" },
-  { label: "Service Areas", href: "/areas" },
-  { label: "Reviews", href: "/reviews" },
-  { label: "FAQ", href: "/faq" },
-  { label: "Contact", href: "/contact" },
+  { label: "Home", href: "#top" },
+  { label: "Services", href: "#services" },
+  { label: "Our Work", href: "#work" },
+  { label: "Why Us", href: "#why-us" },
+  { label: "Service Areas", href: "#areas" },
+  { label: "Reviews", href: "#reviews" },
+  { label: "FAQ", href: "#faq" },
+  { label: "Contact", href: "#contact" },
 ] as const;
 
 export interface ServiceItem {
@@ -366,25 +368,15 @@ export interface ReviewItem {
   source: string;
 }
 
-// Short excerpts from publicly displayed Google and BBB reviews, as shown on
-// the official website and the company's BBB profile.
+// Every review below is displayed publicly on the official reviews page
+// (https://www.bestqualitypainting.ca/reviews) and/or the company's BBB
+// profile. Quotes and attributions are transcribed verbatim from those
+// sources — nothing has been edited, reworded, or invented.
 export const REVIEWS: ReviewItem[] = [
   {
     quote:
       "Best Quality Paint Ltd. worked with me through a very complicated renovation of an older condo with a number of complex problems. I can honestly say that there is nobody that could have done a better job, or tried harder to fix every one of the issues.",
     name: "Jacqueline Fernet",
-    source: "Google Review",
-  },
-  {
-    quote:
-      "The team were professional, friendly, and paid close attention to detail. The work was done ahead of time and more than exceeded my expectations. I highly recommend Best Quality Painting Ltd.",
-    name: "Ryan Saka",
-    source: "Google Review",
-  },
-  {
-    quote:
-      "We just got the outside of our house painted by Best Quality and the work was outstanding. The workers were very careful about my garden and made sure to not make any mess. I highly recommend them.",
-    name: "Sheena K B",
     source: "Google Review",
   },
   {
@@ -395,20 +387,135 @@ export const REVIEWS: ReviewItem[] = [
   },
   {
     quote:
-      "Best Quality Painting did an amazing job on my house and are great people!!",
-    name: "Joe",
+      "Great painting company, they always do an amazing job and make sure their customers are satisfied. Would definitely recommend!",
+    name: "Mo Gwoy",
     source: "Google Review",
   },
   {
     quote:
-      "Best Quality Painting did a wonderful job on my home. The staff is fantastic to work with and very professional and respectful of my home, family, and time.",
-    name: "Kelly N.",
+      "The team were professional, friendly, and paid close attention to detail. The work was done ahead of time and more than exceeded my expectations. I highly recommend Best Quality Painting Ltd.",
+    name: "Ryan Saka",
+    source: "Google Review",
+  },
+  {
+    quote:
+      "Best Quality Painting did an amazing job on my house and are great people!!",
+    name: "Joe Scarpino",
+    source: "Google Review",
+  },
+  {
+    quote:
+      "Masallah and his team repainted the whole inside of my work place. They did a very professional job, with acute attention to detail, very clean painting, and welcomed close inspection during and after the process. We would hire Masallah and his team again!",
+    name: "Janet Ross",
+    source: "Google Review",
+  },
+  {
+    quote:
+      "Best Quality Painting did a wonderful job on my home. The staff is fantastic to work with and very professional and respectful of my home, family and time. I would highly recommend them for your next painting project.",
+    name: "Kelly N",
     source: "BBB Review",
   },
   {
     quote:
-      "Really happy with the work from Best Quality Painting. The crew was friendly, professional, and the paint job turned out great. No complaints at all.",
-    name: "Anonymous",
+      "The team were amazing! Our house is very high and they worked in a quality and safe way! They finished in a timely way, were hardworking and polite. They took feedback and did not finish until we were happy!",
+    name: "Jacqui Kroeker",
+    source: "Google Review",
+  },
+  {
+    quote:
+      "Great employees. Always kept a clean worksite. Great attention to detail and was very quick at finishing the project.",
+    name: "Evaan Joseph",
+    source: "Google Review",
+  },
+  {
+    quote: "Couldn't have asked for better quality service. Truly a great company to deal with, thank you!",
+    name: "Kawan Azizi",
+    source: "Google Review",
+  },
+  {
+    quote:
+      "Excellent work from start to finish. The quality of the painting was outstanding, but what really stood out was the team. Every employee was professional, friendly, hardworking, and took great pride in their work.",
+    name: "ibrahim evbogame",
+    source: "Google Review",
+  },
+  {
+    quote:
+      "Great painting service! Professional, on time, and the quality of work was excellent. Highly recommend for anyone looking for reliable painters.",
+    name: "Maya Naso",
+    source: "Google Review",
+  },
+  {
+    quote:
+      "Massalah and his crew were very professional. They completed the job on time. The team painted the whole condo. Massalah even met us at the countertop supplier and to pick out our floors. Overall an excellent experience.",
+    name: "Angie Caravelis",
+    source: "Google Review",
+  },
+  {
+    quote:
+      "We just got the outside of our house painted by Best Quality and the work was outstanding. The workers were very careful about my garden and made sure to not make any mess. I highly recommend them.",
+    name: "Sheena K B",
+    source: "BBB Review",
+  },
+  {
+    quote:
+      "We had Best Quality Painting re-paint our concrete trim on all of the balconies and window sills. Masallah's team removed the old paint, sealed the concrete and then painted. The results were outstanding.",
+    name: "Alan Hykaway",
+    source: "Google Review",
+  },
+  {
+    quote: "They do great work at a reasonable and fair price. They did the stucco on our house as well as our deck and fence — excellent job.",
+    name: "Dave McMillan",
+    source: "Google Review",
+  },
+  {
+    quote: "They completed the project as requested and in the time frame that was stated. Great work. I would use this company again.",
+    name: "Karen Budnick",
+    source: "Google Review",
+  },
+  {
+    quote:
+      "Really happy with the work from Best Quality Painting. The crew was friendly, professional, and the paint job turned out great. No complaints at all — I'd definitely recommend them.",
+    name: "Aowar Abdullah",
+    source: "Google Review",
+  },
+  {
+    quote: "Did a great job doing my living room, super easy to work with and very friendly service. Would highly recommend doing work with them!",
+    name: "kenroldann",
+    source: "Google Review",
+  },
+  {
+    quote:
+      "We have used Best Quality twice — once for our basement and once for the main floor. Both times we were very happy with the results. Our house looked brand new again!",
+    name: "Walter N",
+    source: "BBB Review",
+  },
+  {
+    quote:
+      "Best quality painting is excellent! Their team is so responsive and helpful, we've done several jobs with them now. I would recommend them to anyone.",
+    name: "Kirby Gompf",
+    source: "Google Review",
+  },
+  {
+    quote:
+      "I recently hired this company to paint the walls in my home, and I couldn't be happier with the results. From start to finish, they were professional, courteous, and easy to work with. They arrived on time and communicated clearly throughout.",
+    name: "Chris Jegues",
+    source: "Google Review",
+  },
+  {
+    quote: "They always do an amazing job and give you the best value for your money.",
+    name: "Joshua Santos",
+    source: "Google Review",
+  },
+  {
+    quote:
+      "Best Quality Painting Ltd. surpassed my expectations throughout, both quality and work done. This team was on time, professional, and gave attention to detail. They really went the extra mile to ensure that things were done right.",
+    name: "Yaak Thon",
+    source: "Google Review",
+  },
+  {
+    quote:
+      "I had a great experience with Best Quality Painting Ltd. The team was professional, punctual, and paid close attention to detail throughout the entire project. They took the time to ensure everything was done properly.",
+    name: "bobchang33",
     source: "Google Review",
   },
 ];

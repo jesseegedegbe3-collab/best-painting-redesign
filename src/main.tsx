@@ -7,30 +7,45 @@ import { ConvexAuthProvider } from "@convex-dev/auth/react";
 import { ConvexReactClient } from "convex/react";
 import { StrictMode, useEffect } from "react";
 import { createRoot } from "react-dom/client";
-import { BrowserRouter, Route, Routes, useLocation } from "react-router";
+import { BrowserRouter, Navigate, Route, Routes, useLocation } from "react-router";
 import "./index.css";
 import "./types/global.d.ts";
 
 // Pages load eagerly — no runtime dynamic imports, so route modules can never
 // fail to fetch mid-session (kept static after repeated dev-server races).
 import Landing from "./pages/Landing.tsx";
-import ServicesPage from "./pages/Services.tsx";
-import WorkPage from "./pages/Work.tsx";
-import WhyUsPage from "./pages/WhyUs.tsx";
-import AreasPage from "./pages/Areas.tsx";
-import ReviewsPage from "./pages/Reviews.tsx";
-import FaqPage from "./pages/Faq.tsx";
-import ContactPage from "./pages/Contact.tsx";
 import AuthPage from "./pages/Auth.tsx";
 import Dashboard from "./pages/Dashboard.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
-// Keep every page starting from the top when the route changes
-function ScrollToTop() {
-  const { pathname } = useLocation();
+// The site is one long scrolling page; old page URLs redirect to their section.
+const SECTION_REDIRECTS = [
+  { path: "/services", hash: "#services" },
+  { path: "/work", hash: "#work" },
+  { path: "/why-us", hash: "#why-us" },
+  { path: "/areas", hash: "#areas" },
+  { path: "/reviews", hash: "#reviews" },
+  { path: "/faq", hash: "#faq" },
+  { path: "/contact", hash: "#contact" },
+] as const;
+
+// Scroll to the anchored section on load/navigation, otherwise to the top
+function ScrollManager() {
+  const { pathname, hash } = useLocation();
   useEffect(() => {
+    if (hash && hash.startsWith("#")) {
+      if (hash === "#top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        return;
+      }
+      const el = document.querySelector(hash);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+        return;
+      }
+    }
     window.scrollTo(0, 0);
-  }, [pathname]);
+  }, [pathname, hash]);
   return null;
 }
 
@@ -69,16 +84,16 @@ createRoot(document.getElementById("root")!).render(
       <ConvexAuthProvider client={convex}>
         <BrowserRouter>
           <RouteSyncer />
-          <ScrollToTop />
+          <ScrollManager />
           <Routes>
             <Route path="/" element={<Landing />} />
-            <Route path="/services" element={<ServicesPage />} />
-            <Route path="/work" element={<WorkPage />} />
-            <Route path="/why-us" element={<WhyUsPage />} />
-            <Route path="/areas" element={<AreasPage />} />
-            <Route path="/reviews" element={<ReviewsPage />} />
-            <Route path="/faq" element={<FaqPage />} />
-            <Route path="/contact" element={<ContactPage />} />
+            {SECTION_REDIRECTS.map(({ path, hash }) => (
+              <Route
+                key={path}
+                path={path}
+                element={<Navigate to={`/${hash}`} replace />}
+              />
+            ))}
             <Route
               path="/auth"
               element={<AuthPage redirectAfterAuth="/dashboard" />}
