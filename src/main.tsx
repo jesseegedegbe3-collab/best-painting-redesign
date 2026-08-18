@@ -78,7 +78,7 @@ createRoot(document.getElementById("root")!).render(
     <VlyToolbar />
     <InstrumentationProvider>
       <ConvexAuthProvider client={convex}>
-        <BrowserRouter>
+        <BrowserRouter basename="/best-painting-redesign">
           <RouteSyncer />
           <ScrollManager />
           <Routes>
