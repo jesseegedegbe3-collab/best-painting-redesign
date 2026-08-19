@@ -1,7 +1,7 @@
 import { api } from "@/convex/_generated/api";
 import { useQuery } from "convex/react";
 import { ArrowRight, ArrowUpRight, Loader2, Mail, Phone } from "lucide-react";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { useAuth } from "@/hooks/use-auth";
 import { BUSINESS } from "@/lib/site-data";
 import { DisclaimerBar } from "@/components/site/Header";
@@ -60,13 +60,13 @@ export default function Dashboard() {
 
       <header className="sticky top-0 z-50 border-b border-ink/10 bg-paper/90 backdrop-blur">
         <Container className="flex items-center justify-between gap-4 py-3.5">
-          <a
-            href="/"
+          <Link
+            to="/"
             className="rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clay"
             aria-label="Back to the concept homepage"
           >
             <Wordmark />
-          </a>
+          </Link>
           <button
             type="button"
             onClick={handleSignOut}
@@ -110,19 +110,25 @@ export default function Dashboard() {
                 <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
                   {link.description}
                 </p>
-                <a
-                  href={link.href}
-                  target={link.external ? "_blank" : undefined}
-                  rel={link.external ? "noopener noreferrer" : undefined}
-                  className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-clay-strong transition-colors hover:text-clay-deep"
-                >
-                  {link.label}
-                  {link.external ? (
+                {link.external ? (
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-clay-strong transition-colors hover:text-clay-deep"
+                  >
+                    {link.label}
                     <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                  ) : (
+                  </a>
+                ) : (
+                  <Link
+                    to={link.href}
+                    className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-clay-strong transition-colors hover:text-clay-deep"
+                  >
+                    {link.label}
                     <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
-                  )}
-                </a>
+                  </Link>
+                )}
               </Reveal>
             ))}
           </section>

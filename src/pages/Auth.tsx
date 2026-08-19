@@ -18,7 +18,7 @@ import { useAuth } from "@/hooks/use-auth";
 import { Container, Wordmark } from "@/components/site/ui";
 import { ArrowRight, Loader2, Mail, UserX } from "lucide-react";
 import { Suspense, useEffect, useState } from "react";
-import { useNavigate, useSearchParams } from "react-router";
+import { Link, useNavigate, useSearchParams } from "react-router";
 
 interface AuthProps {
   redirectAfterAuth?: string;
@@ -113,13 +113,13 @@ function Auth({ redirectAfterAuth }: AuthProps = {}) {
     <div className="min-h-screen flex flex-col">
       <header className="border-b border-ink/10 bg-paper/90 backdrop-blur">
         <Container className="flex items-center justify-between py-3.5">
-          <a
-            href="/"
+          <Link
+            to="/"
             className="rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clay"
             aria-label="Back to the concept homepage"
           >
             <Wordmark />
-          </a>
+          </Link>
           <p className="hidden text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground sm:block">
             Painter Website Demo
           </p>

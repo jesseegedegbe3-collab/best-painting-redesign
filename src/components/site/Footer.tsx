@@ -1,4 +1,5 @@
 import { ExternalLink, Phone } from "lucide-react";
+import { Link } from "react-router";
 import { BUSINESS, NAV_ITEMS } from "@/lib/site-data";
 import { Container, Wordmark } from "./ui";
 
@@ -42,12 +43,12 @@ export function Footer() {
             <ul className="mt-4 space-y-2.5">
               {NAV_ITEMS.map((item) => (
                 <li key={item.href}>
-                  <a
-                    href={item.href}
+                  <Link
+                    to={item.href}
                     className="text-sm text-paper/75 transition-colors hover:text-clay"
                   >
                     {item.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -115,12 +116,12 @@ export function StickyMobileBar() {
         <Phone className="size-4" />
         Call
       </a>
-      <a
-        href="/contact"
+      <Link
+        to="/contact"
         className="inline-flex h-12 items-center justify-center gap-2 whitespace-nowrap rounded-md bg-clay-strong px-2 text-sm font-semibold text-white"
       >
         Get Estimate
-      </a>
+      </Link>
     </div>
   );
 }

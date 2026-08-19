@@ -1,5 +1,6 @@
 import { Menu, Phone, X } from "lucide-react";
 import { useEffect, useState } from "react";
+import { Link } from "react-router";
 import { BUSINESS, NAV_ITEMS } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
 import { Container, PrimaryCta, Wordmark } from "./ui";
@@ -52,13 +53,13 @@ export function Header() {
             scrolled ? "py-3" : "py-4",
           )}
         >
-          <a
-            href="/"
+          <Link
+            to="/"
             className="shrink-0 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clay"
             aria-label="Best Quality Painting Ltd. — homepage"
           >
             <Wordmark />
-          </a>
+          </Link>
 
           {/* Full desktop nav — fits comfortably at xl and up */}
           <nav
@@ -66,13 +67,13 @@ export function Header() {
             aria-label="Primary"
           >
             {NAV_ITEMS.map((item) => (
-              <a
+              <Link
                 key={item.href}
-                href={item.href}
+                to={item.href}
                 className="whitespace-nowrap rounded-md px-2.5 py-2 text-sm font-medium text-ink/70 transition-colors hover:bg-ink/5 hover:text-clay-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clay"
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
           </nav>
 
@@ -110,15 +111,15 @@ export function Header() {
       >
         <nav className="flex flex-col" aria-label="Mobile">
           {NAV_ITEMS.map((item, i) => (
-            <a
+            <Link
               key={item.href}
-              href={item.href}
+              to={item.href}
               onClick={() => setOpen(false)}
               className="border-b border-ink/10 py-4 text-xl font-medium text-ink transition-colors hover:text-clay-strong"
               style={{ transitionDelay: `${i * 20}ms` }}
             >
               {item.label}
-            </a>
+            </Link>
           ))}
         </nav>
         <div className="mt-8 flex flex-col gap-3">

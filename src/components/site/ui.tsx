@@ -185,7 +185,7 @@ export function OutlineCta({
 }) {
   return (
     <Link
-      href={href}
+      to={href}
       className={cn(
         "inline-flex h-12 items-center justify-center gap-2 rounded-md border px-6 text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clay focus-visible:ring-offset-2",
         dark
