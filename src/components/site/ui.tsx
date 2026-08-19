@@ -2,6 +2,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, PaintRoller } from "lucide-react";
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
+import { Link } from "react-router";
 
 export function Container({
   className,
@@ -156,8 +157,8 @@ export function PrimaryCta({
   arrow?: boolean;
 }) {
   return (
-    <a
-      href={href}
+    <Link
+      to={href}
       className={cn(
         "group inline-flex h-12 items-center justify-center gap-2 rounded-md bg-clay-strong px-6 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-clay-deep focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clay focus-visible:ring-offset-2",
         className,
@@ -167,7 +168,7 @@ export function PrimaryCta({
       {arrow && (
         <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
       )}
-    </a>
+    </Link>
   );
 }
 
@@ -183,7 +184,7 @@ export function OutlineCta({
   dark?: boolean;
 }) {
   return (
-    <a
+    <Link
       href={href}
       className={cn(
         "inline-flex h-12 items-center justify-center gap-2 rounded-md border px-6 text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clay focus-visible:ring-offset-2",
@@ -194,6 +195,6 @@ export function OutlineCta({
       )}
     >
       {children}
-    </a>
+    </Link>
   );
 }
